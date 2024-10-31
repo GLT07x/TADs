@@ -20,7 +20,7 @@ public class PilaEnlazada<T> implements Pila<T>
         {
             return null; 
         }
-        T tope = obtenerTope();
+        T tope = tope();
         lista.eliminar(tope); 
         return tope;
     }
@@ -28,17 +28,7 @@ public class PilaEnlazada<T> implements Pila<T>
     @Override
     public T tope()
     {
-        return obtenerTope();
-    }
-
-    private T obtenerTope()
-    {
-        ListaEnlazada.Nodo<T> actual = lista.cabeza;
-        while (actual.siguiente != null)
-        {
-            actual = actual.siguiente;
-        }
-        return actual.data;
+        return lista.obtener(lista.tamaño() - 1);
     }
 
     @Override

@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class ListaArreglo<T> implements Lista<T> 
 {
@@ -15,7 +16,16 @@ public class ListaArreglo<T> implements Lista<T>
     public void agregar(T item) 
     {
         if (tamaño == arreglo.length) {
-            arreglo = Arrays.copyOf(arreglo, tamaño * 2); 
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("0 = no aumentar capacidad; 1 = aumentar");
+            int aumento = scanner.nextInt();
+            if(aumento == 1)
+            {
+                arreglo = Arrays.copyOf(arreglo, tamaño * 2);
+            }else
+            {
+                throw new IllegalArgumentException("lleno, no se puede agregar");
+            } 
         }
         arreglo[tamaño++] = item;
     }
@@ -56,6 +66,7 @@ public class ListaArreglo<T> implements Lista<T>
         return tamaño;
     }
     
+    @Override
     public T obtener(int index) {
         if (index < 0 || index >= tamaño) {
             throw new IndexOutOfBoundsException("Índice fuera de rango");

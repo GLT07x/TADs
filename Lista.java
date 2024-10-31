@@ -5,4 +5,5 @@ public interface Lista<T>
     void eliminar(T item);
     boolean buscar(T item);
     int tamaño();
+    T obtener(int i);
 }

@@ -1,6 +1,6 @@
 public class ListaEnlazada<T> implements Lista<T> 
 {
-    protected static class Nodo<T> 
+    private static class Nodo<T> 
     {
         T data;
         Nodo<T> siguiente;
@@ -12,7 +12,7 @@ public class ListaEnlazada<T> implements Lista<T>
         }
     }
 
-    protected Nodo<T> cabeza;
+    private Nodo<T> cabeza;
     private int tamaño;
 
     public ListaEnlazada() 
@@ -80,6 +80,7 @@ public class ListaEnlazada<T> implements Lista<T>
         return tamaño;
     }
     
+    @Override
     public T obtener(int index) {
         if (index < 0 || index >= tamaño) {
             throw new IndexOutOfBoundsException("Índice fuera de rango");
